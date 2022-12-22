@@ -3,19 +3,17 @@
 
 import sys
 import requests
-import xlwt
 import xlwings as xw
 from bs4 import BeautifulSoup
-from xlwt import Workbook
 from xlrd import open_workbook
 from xlutils.copy import copy
 
 #open locations.txt and store location/url in locations list
-def weatherLocations():
+def weatherLocations(locFile):
     locations = []
     counter = 0
     numLocations = 0
-    with open('locations.txt') as f:
+    with open(locFile) as f:
         while True:
             city = f.readline()
             url = f.readline()
@@ -28,7 +26,7 @@ def weatherLocations():
     return locations, numLocations
 
 #open url for each location. Store time, direction, and wind speed in locations list. 
-def getWindData(urls, numLocations):
+def getWindData(urls, numLocations, hours):
     locations = []
     for i in range(numLocations):
         #retrieve html page 
@@ -43,7 +41,7 @@ def getWindData(urls, numLocations):
         
         #future hours is the number of hours that will display the wind speed
         #max is 23 since dictionary naming convention uses the time of day at the key
-        futureHours = 10
+        futureHours = hours
 
         #append each wind speed and direction to corresponding time. 
         for wind, time in zip(windQuery, timeQuery):
@@ -63,7 +61,7 @@ def getWindData(urls, numLocations):
     return locations
 
 #update xls file with wind data
-def writeFile(urls, locations):
+def writeFile(urls, locations, hours):
 
     #close workbook if already open
     try:
@@ -77,7 +75,7 @@ def writeFile(urls, locations):
     wb = copy(rb)
     sheet1 = wb.get_sheet('Sheet 1')
 
-    futureHours = 10
+    futureHours = hours
     row = 1
     column = 0
     index = 0
@@ -94,15 +92,19 @@ def writeFile(urls, locations):
             futureHours = futureHours - 1
         row = 1
         column = column + 4
-        futureHours = 10
+        futureHours = hours
 
     wb.save('windSpeedDirection.xls')
     openBook = xw.Book("C:/Users/Kylew/CS/sports betting/windSpeedDirection.xls")
 
-def main():
-    urls, numLocations = weatherLocations()
-    locations = getWindData(urls, numLocations)
-    writeFile(urls, locations)
+def main(hours, locFile):
+    urls, numLocations = weatherLocations(locFile)
+    locations = getWindData(urls, numLocations, hours)
+    writeFile(urls, locations, hours)
 
 if __name__ == "__main__":
-    main()
+    if len(sys.argv) != 3:
+        raise ValueError('Please provide the number of hours of weather data desired and a location/url text file.')
+    hours = int(sys.argv[1])
+    locFile = sys.argv[2]
+    main(hours, locFile)
