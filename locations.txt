@@ -1,0 +1,10 @@
+Nashville
+https://weather.com/weather/hourbyhour/l/11e5d23a774a46624e77e5b3800a3030b94de92607dec513f1e622d6735a4996
+Chicago
+https://weather.com/weather/hourbyhour/l/Chicago+IL?canonicalCityId=51327091448a763db3e0093b240009381d87952467e6c2ba8bad55f1328ec986&adlt=strict&toWww=1&redig=822BB498260F43E486DFE19905C3ADB3
+LA
+https://weather.com/weather/hourbyhour/l/Los+Angeles+CA?canonicalCityId=84c64154109916077c8d3c2352410aaae5f6eeff682000e3a7470e38976128c2
+New York
+https://weather.com/weather/hourbyhour/l/New+York+NY+USNY0996:1:US
+Boston
+https://weather.com/weather/hourbyhour/l/5d1f06f6702c87ef11934e2425c12d74791b98227880a406ffdd95a7fa94ffc3?adlt=strict&toWww=1&redig=15D5E8DF7783492BADF7C633D7D34B4E
