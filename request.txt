@@ -1,0 +1,4 @@
+Denver
+https://weather.com/weather/hourbyhour/l/Denver+CO?canonicalCityId=9298101d6fcde701a8dae5f27c875376e208cae14ce31a258c225f63573146be
+Los Angeles
+https://weather.com/weather/hourbyhour/l/Los+Angeles+CA?canonicalCityId=84c64154109916077c8d3c2352410aaae5f6eeff682000e3a7470e38976128c2
